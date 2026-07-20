@@ -767,6 +767,15 @@ const FB = {
       const s = localStorage.getItem(Store.FBKEY);
       this.cfg = s ? JSON.parse(s) : null;
     } catch(e) { this.cfg = null; }
+    // Standaard Nox Luna Notes config (automatisch ingesteld)
+    if (!this.cfg) {
+      this.cfg = {
+        projectId: 'nox-luna-notes',
+        apiKey:    'AIzaSyCRjBxy8PSmCXYY5nPvMOBQLTzYZy-4CEc',
+        userId:    'marieke'
+      };
+      localStorage.setItem(Store.FBKEY, JSON.stringify(this.cfg));
+    }
   },
 
   url() {
