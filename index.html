@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Takenoverzicht — Nox Luna</title>
+<title>Notes — Nox Luna</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Taken">
+<meta name="apple-mobile-web-app-title" content="Notes">
 <meta name="theme-color" content="#0D0E14">
 <link rel="apple-touch-icon" href="icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="icon.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root {
-  --bg:       #F3F4F6;
-  --surface:  #FFFFFF;
-  --border:   #E5E7EB;
-  --text:     #111827;
-  --text2:    #6B7280;
-  --primary:  #4F46E5;
-  --primary-l:#EEF2FF;
-  --danger:   #EF4444;
+  --bg:       #F5F0E8;   /* Nox Luna Ivory */
+  --surface:  #FFFDF8;
+  --border:   #E2D9C6;
+  --text:     #0D0E14;   /* Nox Black */
+  --text2:    #6B5840;
+  --primary:  #8B6914;   /* Dark gold */
+  --primary-l:#F5EDD8;
+  --danger:   #B83232;
 
   /* 7 categorieën */
   --c-regelen:     #3B82F6;
@@ -40,18 +41,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:      #0F172A;
-    --surface: #1E293B;
-    --border:  #334155;
-    --text:    #F1F5F9;
-    --text2:   #94A3B8;
-    --primary-l:#1E1B4B;
+    --bg:      #0D0E14;
+    --surface: #1B1C22;
+    --border:  #2C2D35;
+    --text:    #F5F0E8;
+    --text2:   #A8916A;
+    --primary:  #C9A84C;
+    --primary-l:#1C1708;
   }
 }
 
 html,body {
   height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-family:'Montserrat',sans-serif;
   background:var(--bg);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
@@ -86,19 +88,28 @@ html,body {
   width:32px;height:32px;flex-shrink:0;
 }
 .header h1 {
-  font-size:19px;font-weight:800;
-  background:linear-gradient(135deg,#C9A84C,#E2C97E);
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:400;letter-spacing:.08em;
+  background:linear-gradient(135deg,#8B6914,#C9A84C);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
+  line-height:1.1;
 }
 .header h1 span {
   display:block;
-  font-size:10px;font-weight:400;letter-spacing:.18em;
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:.22em;
   text-transform:uppercase;
-  background:linear-gradient(135deg,var(--primary),#7C3AED);
+  background:linear-gradient(135deg,#8B6914,#C9A84C);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
-  margin-top:-1px;
+  margin-top:1px;opacity:.75;
+}
+@media(prefers-color-scheme:dark){
+  .header h1 { background:linear-gradient(135deg,#C9A84C,#E2C97E);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+  .header h1 span { background:linear-gradient(135deg,#C9A84C,#E2C97E);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
 }
 .hdr-btns { display:flex;gap:6px; }
 
@@ -115,7 +126,7 @@ html,body {
   height:36px;padding:0 14px;border-radius:10px;border:none;
   background:var(--primary);color:#fff;
   display:flex;align-items:center;gap:5px;
-  cursor:pointer;font-size:14px;font-weight:700;flex-shrink:0;
+  cursor:pointer;font-size:15px;font-weight:700;flex-shrink:0;
   transition:opacity .15s;
   box-shadow:0 2px 8px rgba(79,70,229,.35);
 }
@@ -129,10 +140,10 @@ html,body {
 }
 
 .pill {
-  padding:6px 10px;text-align:center;
+  padding:8px 10px;text-align:center;
   border-radius:10px;border:1.5px solid var(--border);
   background:transparent;color:var(--text2);
-  font-size:13px;font-weight:600;cursor:pointer;
+  font-size:15px;font-weight:600;cursor:pointer;
   white-space:nowrap;transition:all .15s;
   /* "Alles" spans both columns */
 }
@@ -163,8 +174,8 @@ html,body {
   border-radius:8px;overflow:hidden;
 }
 .tog {
-  padding:4px 11px;border:none;background:transparent;
-  font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;
+  padding:6px 13px;border:none;background:transparent;
+  font-size:15px;font-weight:600;color:var(--text2);cursor:pointer;
 }
 .tog.active { background:var(--primary);color:#fff; }
 
@@ -174,7 +185,7 @@ html,body {
   background:var(--surface);border-bottom:1px solid var(--border);
 }
 .stat {
-  font-size:12px;font-weight:600;padding:3px 10px;
+  font-size:13px;font-weight:600;padding:4px 11px;
   border-radius:999px;background:var(--bg);color:var(--text2);
 }
 .stat.danger { background:#FEF2F2;color:var(--danger); }
@@ -230,7 +241,7 @@ html,body {
 
 .card-body { flex:1;min-width:0; }
 .card-title {
-  font-size:15px;font-weight:500;line-height:1.4;
+  font-size:17px;font-weight:500;line-height:1.4;
   word-break:break-word;
 }
 .card.done .card-title {
@@ -240,7 +251,7 @@ html,body {
   display:flex;align-items:center;gap:5px;margin-top:6px;flex-wrap:wrap;
 }
 .badge {
-  font-size:11px;font-weight:700;padding:2px 8px;
+  font-size:12px;font-weight:700;padding:3px 9px;
   border-radius:6px;color:#fff;letter-spacing:.02em;
 }
 .prio-badge {
@@ -301,14 +312,14 @@ html,body {
 /* form */
 .fgrp { margin-bottom:14px; }
 .flbl {
-  display:block;font-size:12px;font-weight:700;
+  display:block;font-size:13px;font-weight:700;
   text-transform:uppercase;letter-spacing:.06em;
   color:var(--text2);margin-bottom:6px;
 }
 .finput,.ftextarea,.fselect {
-  width:100%;padding:11px 13px;border-radius:11px;
+  width:100%;padding:13px 14px;border-radius:11px;
   border:1.5px solid var(--border);background:var(--bg);
-  color:var(--text);font-size:15px;font-family:inherit;outline:none;
+  color:var(--text);font-size:16px;font-family:inherit;outline:none;
   transition:border-color .15s;
 }
 .finput:focus,.ftextarea:focus,.fselect:focus { border-color:var(--primary); }
@@ -329,7 +340,7 @@ html,body {
 .cat-opt-dot {
   width:13px;height:13px;border-radius:50%;flex-shrink:0;
 }
-.cat-opt-lbl { font-size:13px;font-weight:600; }
+.cat-opt-lbl { font-size:15px;font-weight:600; }
 
 /* prio row */
 .prio-row { display:flex;gap:7px; }
@@ -350,8 +361,8 @@ html,body {
 /* btn row */
 .btn-row { display:flex;gap:8px;margin-top:18px; }
 .btn {
-  flex:1;padding:14px;border-radius:13px;border:none;
-  font-size:15px;font-weight:700;cursor:pointer;transition:opacity .15s;
+  flex:1;padding:15px;border-radius:13px;border:none;
+  font-size:16px;font-weight:700;cursor:pointer;transition:opacity .15s;
 }
 .btn:active { opacity:.8; }
 .btn-primary   { background:var(--primary);color:#fff; }
@@ -419,7 +430,7 @@ html,body {
     <div class="header-row1">
       <div class="header-brand">
         <svg class="header-emblem" id="headerEmblem" viewBox="0 0 32 32"></svg>
-        <h1>Takenoverzicht<span>Nox Luna</span></h1>
+        <h1>Notes<span>Nox Luna</span></h1>
       </div>
       <div class="hdr-btns">
         <button class="add-btn" onclick="UI.openAdd()">+ Nieuwe taak</button>
@@ -1127,7 +1138,7 @@ const UI = {
   if (State.items.length === 0) {
     State.items = [{
       id: uid(),
-      title: 'Welkom! Tik op ✏️ om te bewerken, + om een taak toe te voegen.',
+      title: 'Welkom bij Notes! Tik op ✏️ om te bewerken, + om een taak toe te voegen.',
       cat: 'uitdenken', prio: 'normaal',
       notes: 'Gebruik de filters bovenin om per categorie te kijken. Tik op 📝 om notities te openen. Via ⚙️ kun je Firebase koppelen voor sync op meerdere apparaten.',
       done: false, createdAt: Date.now(), updatedAt: Date.now()
