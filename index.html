@@ -26,7 +26,8 @@
 
   /* 7 categorieën */
   --c-regelen:     #3B82F6;
-  --c-organiseren: #0EA5E9;
+  --c-onthouden: #0EA5E9;
+  --c-tips:      #14B8A6;
   --c-uitdenken:   #8B5CF6;
   --c-ontwerpen:   #EC4899;
   --c-bespreken:   #10B981;
@@ -154,7 +155,8 @@ html,body {
 .pill.active { color:#fff; border-color:transparent; }
 .pill[data-f="all"].active          { background:var(--primary); }
 .pill[data-f="regelen"].active      { background:var(--c-regelen); }
-.pill[data-f="organiseren"].active  { background:var(--c-organiseren); }
+.pill[data-f="onthouden"].active  { background:var(--c-onthouden); }
+.pill[data-f="tips"].active       { background:var(--c-tips); }
 .pill[data-f="uitdenken"].active    { background:var(--c-uitdenken); }
 .pill[data-f="ontwerpen"].active    { background:var(--c-ontwerpen); }
 .pill[data-f="bespreken"].active    { background:var(--c-bespreken); }
@@ -440,12 +442,13 @@ html,body {
     <div class="pills" id="pills">
       <button class="pill active" data-f="all"         onclick="App.setFilter('all',this)">Alles</button>
       <button class="pill" data-f="regelen"            onclick="App.setFilter('regelen',this)">📌 Regelen</button>
-      <button class="pill" data-f="organiseren"        onclick="App.setFilter('organiseren',this)">🗂 Organiseren</button>
+      <button class="pill" data-f="onthouden"          onclick="App.setFilter('onthouden',this)">🧠 Onthouden</button>
       <button class="pill" data-f="uitdenken"          onclick="App.setFilter('uitdenken',this)">💡 Uitdenken</button>
       <button class="pill" data-f="ontwerpen"          onclick="App.setFilter('ontwerpen',this)">✏️ Ontwerpen</button>
       <button class="pill" data-f="bespreken"          onclick="App.setFilter('bespreken',this)">💬 Bespreken</button>
       <button class="pill" data-f="aanvullen"          onclick="App.setFilter('aanvullen',this)">🔧 Aanvullen</button>
       <button class="pill" data-f="onderzoeken"        onclick="App.setFilter('onderzoeken',this)">🔍 Onderzoeken</button>
+      <button class="pill" data-f="tips"               onclick="App.setFilter('tips',this)">💎 Tips</button>
     </div>
   </header>
 
@@ -673,12 +676,13 @@ function installIcon() {
 // ═══════════════════════════════════════════════
 const CATS = {
   regelen:     { label:'Regelen',     emoji:'📌', color:'#3B82F6' },
-  organiseren: { label:'Organiseren', emoji:'🗂', color:'#0EA5E9' },
+  onthouden:   { label:'Onthouden',   emoji:'🧠', color:'#0EA5E9' },
   uitdenken:   { label:'Uitdenken',   emoji:'💡', color:'#8B5CF6' },
   ontwerpen:   { label:'Ontwerpen',   emoji:'✏️', color:'#EC4899' },
   bespreken:   { label:'Bespreken',   emoji:'💬', color:'#10B981' },
   aanvullen:   { label:'Aanvullen',   emoji:'🔧', color:'#F59E0B' },
   onderzoeken: { label:'Onderzoeken', emoji:'🔍', color:'#F97316' },
+  tips:        { label:'Tips',        emoji:'💎', color:'#14B8A6' },
 };
 
 const PRIOS = {
