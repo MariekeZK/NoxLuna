@@ -90,7 +90,7 @@ html,body {
 }
 .header h1 {
   font-family:'Cormorant Garamond',serif;
-  font-size:26px;font-weight:400;letter-spacing:.08em;
+  font-size:22px;font-weight:500;letter-spacing:.06em;
   background:linear-gradient(135deg,#8B6914,#C9A84C);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
@@ -98,13 +98,13 @@ html,body {
 }
 .header h1 span {
   display:block;
-  font-family:'Montserrat',sans-serif;
-  font-size:9px;font-weight:500;letter-spacing:.22em;
-  text-transform:uppercase;
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;font-weight:400;letter-spacing:.18em;
+  font-style:italic;
   background:linear-gradient(135deg,#8B6914,#C9A84C);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
-  margin-top:1px;opacity:.75;
+  margin-top:1px;
 }
 @media(prefers-color-scheme:dark){
   .header h1 { background:linear-gradient(135deg,#C9A84C,#E2C97E);
@@ -112,7 +112,7 @@ html,body {
   .header h1 span { background:linear-gradient(135deg,#C9A84C,#E2C97E);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
 }
-.hdr-btns { display:flex;gap:6px; }
+.hdr-btns { display:flex;gap:6px;position:relative;z-index:30;pointer-events:auto; }
 
 .icon-btn {
   width:36px;height:36px;border-radius:10px;border:none;
