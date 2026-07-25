@@ -89,28 +89,28 @@ html,body {
   width:32px;height:32px;flex-shrink:0;
 }
 .header h1 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;font-weight:500;letter-spacing:.06em;
-  background:linear-gradient(135deg,#8B6914,#C9A84C);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
+  font-family:'Montserrat',sans-serif;
+  font-size:20px;font-weight:700;letter-spacing:.04em;
+  color:#5C3D0A;
   line-height:1.1;
 }
 .header h1 span {
   display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:13px;font-weight:400;letter-spacing:.18em;
-  font-style:italic;
-  background:linear-gradient(135deg,#8B6914,#C9A84C);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-  margin-top:1px;
+  font-family:'Montserrat',sans-serif;
+  font-size:12px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#5C3D0A;
+  margin-top:2px;opacity:.85;
 }
 @media(prefers-color-scheme:dark){
-  .header h1 { background:linear-gradient(135deg,#C9A84C,#E2C97E);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
-  .header h1 span { background:linear-gradient(135deg,#C9A84C,#E2C97E);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+  .header h1 { color:#C9A84C; }
+  .header h1 span { color:#C9A84C; }
+}
+/* Mac Safari Web App: push header below window chrome */
+@media (display-mode: standalone) {
+  .header {
+    padding-top: max(40px, calc(14px + env(safe-area-inset-top, 0px)));
+  }
 }
 .hdr-btns { display:flex;gap:6px;position:relative;z-index:30;pointer-events:auto; }
 
