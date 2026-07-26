@@ -112,7 +112,10 @@ html,body {
     padding-top: max(40px, calc(14px + env(safe-area-inset-top, 0px)));
   }
 }
-.hdr-btns { display:flex;gap:6px;position:relative;z-index:30;pointer-events:auto; }
+.hdr-btns { display:flex;gap:6px;position:relative;z-index:30;pointer-events:auto;-webkit-app-region:no-drag;app-region:no-drag; }
+.add-btn, .icon-btn { -webkit-app-region:no-drag;app-region:no-drag; }
+.header { -webkit-app-region:drag; }
+.header-brand, .pills { -webkit-app-region:no-drag;app-region:no-drag; }
 
 .icon-btn {
   width:36px;height:36px;border-radius:10px;border:none;
@@ -292,9 +295,9 @@ html,body {
 .overlay {
   position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.45);
   z-index:50;display:flex;align-items:flex-end;justify-content:center;
-  opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility .2s;
+  opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility 0s .2s;
 }
-.overlay.on { opacity:1;pointer-events:all;visibility:visible; }
+.overlay.on { opacity:1;pointer-events:all;visibility:visible;transition:opacity .2s,visibility 0s; }
 
 .sheet {
   background:var(--surface);border-radius:22px 22px 0 0;
@@ -375,9 +378,9 @@ html,body {
 /* ─── SETTINGS PANEL ─── */
 .s-overlay {
   position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.4);
-  z-index:50;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility .2s;
+  z-index:50;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility 0s .2s;
 }
-.s-overlay.on { opacity:1;pointer-events:all;visibility:visible; }
+.s-overlay.on { opacity:1;pointer-events:all;visibility:visible;transition:opacity .2s,visibility 0s; }
 .s-panel {
   position:absolute;top:0;right:0;bottom:0;width:88%;max-width:380px;
   background:var(--surface);overflow-y:auto;
@@ -1160,6 +1163,29 @@ const UI = {
   }
 
   render();
+
+  // Mac Web App fix: titelbalk (~28px) wordt niet meegeteld in de layout
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    const isMac = /Macintosh/.test(navigator.userAgent) && !('ontouchstart' in window);
+    if (isMac) {
+      const safeTop = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--safe-t')) || 0;
+      const titleBar = Math.max(safeTop, 28);
+      const app = document.getElementById('app');
+      app.style.marginTop = titleBar + 'px';
+      app.style.height = 'calc(100dvh - ' + titleBar + 'px)';
+    }
+  }
+
+  // Expliciete event listeners als backup voor Mac Web App
+  document.querySelector('.add-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    UI.openAdd();
+  });
+  document.querySelector('.icon-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    UI.openSettings();
+  });
 })();
 </script>
 </body>
