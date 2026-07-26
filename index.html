@@ -290,11 +290,11 @@ html,body {
 
 /* ─── BOTTOM SHEET MODAL ─── */
 .overlay {
-  position:fixed;inset:0;background:rgba(0,0,0,.45);
+  position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.45);
   z-index:50;display:flex;align-items:flex-end;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .2s;
+  opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility .2s;
 }
-.overlay.on { opacity:1;pointer-events:all; }
+.overlay.on { opacity:1;pointer-events:all;visibility:visible; }
 
 .sheet {
   background:var(--surface);border-radius:22px 22px 0 0;
@@ -374,10 +374,10 @@ html,body {
 
 /* ─── SETTINGS PANEL ─── */
 .s-overlay {
-  position:fixed;inset:0;background:rgba(0,0,0,.4);
-  z-index:50;opacity:0;pointer-events:none;transition:opacity .2s;
+  position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.4);
+  z-index:50;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility .2s;
 }
-.s-overlay.on { opacity:1;pointer-events:all; }
+.s-overlay.on { opacity:1;pointer-events:all;visibility:visible; }
 .s-panel {
   position:absolute;top:0;right:0;bottom:0;width:88%;max-width:380px;
   background:var(--surface);overflow-y:auto;
